@@ -1,5 +1,14 @@
 package com.example.daily.repository
 
-class DailyEntryRepository {
-    // Логика для получения и сохранения записей в ежедневнике
+import com.example.daily.di.DailyEntryDao
+import com.example.daily.model.DailyEntry
+
+class DailyEntryRepository(private val dailyEntryDao: DailyEntryDao) {
+    suspend fun insertEntry(entry: DailyEntry) {
+        dailyEntryDao.insertEntry(entry)
+    }
+
+    suspend fun getAllEntries(): List<DailyEntry> {
+        return dailyEntryDao.getAllEntries()
+    }
 }

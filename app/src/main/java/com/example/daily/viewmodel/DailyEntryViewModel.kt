@@ -5,5 +5,11 @@ import com.example.daily.model.DailyEntry
 import com.example.daily.repository.DailyEntryRepository
 
 class DailyEntryViewModel(private val repository: DailyEntryRepository) : ViewModel() {
-    // Методы для получения и сохранения записей в ежедневнике
+    suspend fun addEntry(entry: DailyEntry) {
+        repository.insertEntry(entry)
+    }
+
+    suspend fun getAllEntries(): List<DailyEntry> {
+        return repository.getAllEntries()
+    }
 }
