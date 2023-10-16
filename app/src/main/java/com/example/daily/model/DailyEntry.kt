@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class DailyEntry(
     @PrimaryKey(autoGenerate = true)
-    val id: Long,
+    val id: Long = 0, // Автоматически генерируемый айди
     val date: String,
     val text: String
 )
