@@ -49,8 +49,8 @@ fun ListScreen(navController: NavController, entries: List<DailyEntry>) {
             }
             Button(
                 onClick = {
+                    navController.navigate("add_entry")
                     // Переход к экрану добавления записи
-                    // navController.navigate("add_entry")
                 }
             ) {
                 Text("Добавить запись")
