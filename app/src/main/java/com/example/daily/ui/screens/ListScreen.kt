@@ -16,8 +16,10 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.daily.model.DailyEntry
 
 
@@ -71,5 +73,27 @@ fun EntryListItem(entry: DailyEntry, onItemClick: () -> Unit) {
     ) {
         Text(text = entry.date, style = MaterialTheme.typography.h6)
         Text(text = entry.text, style = MaterialTheme.typography.body1)
+    }
+}
+
+@Preview
+@Composable
+fun ListScreenPreview() {
+    val navController = rememberNavController()
+    val dummyEntries = generateDummyEntries() // Замените это на ваш список записей
+
+    MaterialTheme {
+        ListScreen(navController, dummyEntries)
+    }
+}
+
+@Composable
+fun generateDummyEntries(): List<DailyEntry> {
+    // Здесь можно создать и заполнить список фиктивными данными
+    return List(10) { index ->
+        DailyEntry(
+            date = "Date $index",
+            text = "Entry $index"
+        )
     }
 }
