@@ -3,6 +3,7 @@ package com.example.daily.ui.screens
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -47,15 +48,38 @@ fun AddEntryScreen(navController: NavController) {
             label = { Text("Текст записи") },
             modifier = Modifier.fillMaxWidth()
         )
-        Button(
-            onClick = {
-                // Сохранить запись в базу данных
-                // Переход обратно к экрану списка записей
-                // navController.popBackStack()
-            },
-            modifier = Modifier.padding(16.dp)
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text("Сохранить")
+            // Используйте weight и fillMaxWidth, чтобы сделать кнопки одинакового размера
+            Button(
+                onClick = {
+                    // Сохранить запись в базу данных
+                    // Перейти обратно к экрану списка записей
+                    navController.navigate("list")
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(end = 12.dp)
+                    .weight(1f) // Равное вес для равномерного распределения
+            ) {
+                Text("Сохранить")
+            }
+
+            Button(
+                onClick = {
+                    // Отмена - перейти обратно к экрану списка записей
+                    navController.navigate("list")
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f) // Равное вес для равномерного распределения
+            ) {
+                Text("Отмена")
+            }
         }
     }
 }
