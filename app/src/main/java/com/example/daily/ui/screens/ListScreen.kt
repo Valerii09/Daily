@@ -24,10 +24,16 @@ import com.example.daily.model.DailyEntry
 
 
 
+/**
+ * Composable-функция для экрана списка записей в ежедневнике.
+ *
+ * @param navController NavController для навигации по приложению.
+ * @param entries Список записей, которые нужно отобразить.
+ */
 @Composable
 fun ListScreen(navController: NavController, entries: List<DailyEntry>) {
     Surface(
-        color = MaterialTheme.colors.background, // Здесь исправление
+        color = MaterialTheme.colors.background, // Цвет фона поверхности
         modifier = Modifier.fillMaxSize()
     ) {
         Column(
@@ -37,7 +43,7 @@ fun ListScreen(navController: NavController, entries: List<DailyEntry>) {
         ) {
             TopAppBar(
                 title = { Text("Ежедневник") },
-                backgroundColor = MaterialTheme.colors.primary // Здесь исправление
+                backgroundColor = MaterialTheme.colors.primary // Цвет верхней панели
             )
             LazyColumn {
                 items(entries) { entry ->
@@ -59,11 +65,16 @@ fun ListScreen(navController: NavController, entries: List<DailyEntry>) {
     }
 }
 
-
+/**
+ * Composable-функция для отображения элемента списка записей.
+ *
+ * @param entry Запись для отображения.
+ * @param onItemClick Обработчик нажатия на элемент.
+ */
 @Composable
 fun EntryListItem(entry: DailyEntry, onItemClick: () -> Unit) {
     // Элемент списка записей
-    // Можете отобразить информацию о записи, такую как дата и текст
+    // Можно отобразить информацию о записи, такую как дата и текст,
     // и добавить обработчик нажатия
     Column(
         modifier = Modifier
@@ -75,6 +86,7 @@ fun EntryListItem(entry: DailyEntry, onItemClick: () -> Unit) {
         Text(text = entry.text, style = MaterialTheme.typography.body1)
     }
 }
+
 
 @Preview
 @Composable

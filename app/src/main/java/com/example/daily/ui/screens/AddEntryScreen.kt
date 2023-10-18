@@ -21,11 +21,18 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 
+/**
+ * Composable-функция для экрана добавления новой записи в журнал.
+ *
+ * @param navController NavController для навигации по приложению.
+ */
 @Composable
 fun AddEntryScreen(navController: NavController) {
+    // Состояние для хранения даты и текста записи.
     var date by remember { mutableStateOf("") }
     var text by remember { mutableStateOf("") }
 
+    // Создание макета экрана.
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -33,32 +40,38 @@ fun AddEntryScreen(navController: NavController) {
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        // Верхняя панель приложения.
         TopAppBar(
             title = { Text("Добавить запись") },
             backgroundColor = MaterialTheme.colors.primary
         )
+
+        // Поля ввода для даты и текста записи.
         OutlinedTextField(
             value = date,
             onValueChange = { date = it },
             label = { Text("Дата") }
         )
+
         OutlinedTextField(
             value = text,
             onValueChange = { text = it },
             label = { Text("Текст записи") },
             modifier = Modifier.fillMaxWidth()
         )
+
+        // Кнопки "Сохранить" и "Отмена".
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            // Используйте weight и fillMaxWidth, чтобы сделать кнопки одинакового размера
+            // Используйте weight и fillMaxWidth, чтобы сделать кнопки одинакового размера.
             Button(
                 onClick = {
-                    // Сохранить запись в базу данных
-                    // Перейти обратно к экрану списка записей
+                    // Сохранить запись в базу данных.
+                    // Перейти обратно к экрану списка записей.
                     navController.navigate("list")
                 },
                 modifier = Modifier
@@ -71,7 +84,7 @@ fun AddEntryScreen(navController: NavController) {
 
             Button(
                 onClick = {
-                    // Отмена - перейти обратно к экрану списка записей
+                    // Отмена - перейти обратно к экрану списка записей.
                     navController.navigate("list")
                 },
                 modifier = Modifier
@@ -83,6 +96,7 @@ fun AddEntryScreen(navController: NavController) {
         }
     }
 }
+
 
 @Preview
 @Composable

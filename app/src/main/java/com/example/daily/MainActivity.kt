@@ -12,6 +12,9 @@ import com.example.daily.ui.screens.AddEntryScreen
 import com.example.daily.ui.screens.ListScreen
 import com.example.daily.ui.theme.DailyTheme
 
+/**
+ * Главная активность приложения.
+ */
 class MainActivity : ComponentActivity() {
     private lateinit var navController: NavHostController
 
@@ -44,3 +47,4 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
